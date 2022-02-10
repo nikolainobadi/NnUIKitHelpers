@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import UIKitExtensions
 
 open class CustomControl: UISegmentedControl {
     

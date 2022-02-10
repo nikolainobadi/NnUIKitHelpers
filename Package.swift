@@ -12,12 +12,6 @@ let package = Package(
         .library(
             name: "NnUIKitHelpers",
             targets: ["NnUIKitHelpers"]),
-        .library(
-            name: "UIKitDesigns",
-            targets: ["UIKitDesigns"]),
-        .library(
-            name: "UIKitExtensions",
-            targets: ["UIKitExtensions"]),
     ],
     dependencies: [
         
@@ -25,12 +19,6 @@ let package = Package(
     targets: [
         .target(
             name: "NnUIKitHelpers",
-            dependencies: []),
-        .target(
-            name: "UIKitDesigns",
-            dependencies: ["UIKitExtensions"]),
-        .target(
-            name: "UIKitExtensions",
             dependencies: []),
         .testTarget(
             name: "NnUIKitHelpersTests",
