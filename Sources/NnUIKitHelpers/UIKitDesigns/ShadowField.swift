@@ -97,6 +97,62 @@ public extension ShadowField {
     }
 }
 
+// MARK: - Modifiers
+public extension ShadowField {
+    
+    func autoCapitalize(_ autoType: UITextAutocapitalizationType) -> ShadowField {
+        self.autocapitalizationType = autoType
+        
+        return self
+    }
+    
+    func setTag(_ num: Int) -> ShadowField {
+        self.tag = num
+        
+        return self
+    }
+    
+    func setText(_ text: String) -> ShadowField {
+        self.text = text
+        
+        return self
+    }
+    
+    func setTouchDownAction(_ touchDownAction: @escaping () -> Void) -> ShadowField {
+        
+        let action = UIAction { _ in
+            touchDownAction()
+        }
+        
+        self.addAction(action, for: .editingDidBegin)
+        
+        return self
+    }
+    
+    func setEditAction(_ editAction: @escaping () -> Void) -> ShadowField {
+        
+        let action = UIAction { _ in
+            editAction()
+        }
+        
+        self.addAction(action, for: .editingChanged)
+        
+        return self
+    }
+    
+    func setKeyboardType(_ keyboardType: UIKeyboardType) -> ShadowField {
+        self.keyboardType = keyboardType
+        
+        return self
+    }
+    
+    func isPassword() -> ShadowField {
+        self.isSecureTextEntry = true
+        
+        return self
+    }
+}
+
 
 // MARK: - Private Methods
 private extension ShadowField {
