@@ -37,8 +37,8 @@ public final class TextFieldToolBar: UIToolbar {
     
     
     // MARK: - Init
-    init(onNextTapped: @escaping () -> Void,
-         onCancelTapped: @escaping () -> Void) {
+    public init(onNextTapped: @escaping () -> Void,
+                onCancelTapped: @escaping () -> Void) {
         
         self.onNextTapped = onNextTapped
         self.onCancelTapped = onCancelTapped
