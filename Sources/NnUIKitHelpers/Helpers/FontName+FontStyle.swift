@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  FontName+FontStyle.swift
 //  
 //
 //  Created by Nikolai Nobadi on 2/9/22.
@@ -14,3 +14,4 @@ public enum FontName: String {
 public enum FontStyle {
     case giant, largeTitle, title, smallTitle, largeDetail, detail, smallDetail, errorLabel, speechBubble
 }
+
