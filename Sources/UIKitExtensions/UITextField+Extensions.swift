@@ -10,7 +10,6 @@ import Combine
 
 public extension UITextField {
     
-    // MARK: Get Text
     func trimmedText() -> String? {
         text?.trimmingCharacters(in: .whitespaces)
     }
@@ -37,5 +36,66 @@ public extension UITextField {
             .eraseToAnyPublisher()
     }
 }
+
+
+// MARK: - Modifiers
+public extension UITextField {
+    
+    func autoCapitalize(_ autoType: UITextAutocapitalizationType) -> UITextField {
+        self.autocapitalizationType = autoType
+        
+        return self
+    }
+    
+    func setTag(_ num: Int) -> UITextField {
+        self.tag = num
+        
+        return self
+    }
+    
+    func setText(_ text: String) -> UITextField {
+        self.text = text
+        
+        return self
+    }
+    
+    func setTouchDownAction(_ touchDownAction: @escaping () -> Void) -> UITextField {
+        
+        let action = UIAction { _ in
+            touchDownAction()
+        }
+        
+        self.addAction(action, for: .editingDidBegin)
+        
+        return self
+    }
+    
+    func setEditAction(_ editAction: @escaping () -> Void) -> UITextField {
+        
+        let action = UIAction { _ in
+            editAction()
+        }
+        
+        self.addAction(action, for: .editingChanged)
+        
+        return self
+    }
+    
+    func setKeyboardType(_ keyboardType: UIKeyboardType) -> UITextField {
+        self.keyboardType = keyboardType
+        
+        return self
+    }
+    
+    func isPassword() -> UITextField {
+        self.isSecureTextEntry = true
+        
+        return self
+    }
+}
+
+
+
+
 
 
