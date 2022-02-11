@@ -57,7 +57,7 @@ private extension NnViewController {
         
         var toolbarHeight: CGFloat = 0
         
-        if let toolbar = currentField.inputView {
+        if let toolbar = currentField.inputAccessoryView {
             toolbarHeight = view.getConvertedFrame(fromSubview: toolbar)?.maxY ?? 0
         }
 
