@@ -11,15 +11,18 @@ import Combine
 open class NnViewController: UIViewController {
     
     // MARK: - Properties
+    private var fieldsToObserve: [UITextField]? = nil
     private var pubStore: AnyCancellable?
     
     
     // MARK: - Init
-    public init(hasTextFields: Bool = false, withKeyboardObserver: Bool = false) {
+    public init(hasTextFields: Bool = false, fieldsToObserve: [UITextField]? = nil) {
+        
+        self.fieldsToObserve = fieldsToObserve
         super.init(nibName: nil, bundle: nil)
         
         if hasTextFields { hideKeyboardWhenTappedAround() }
-        if withKeyboardObserver { setupKeyboardObserver() }
+        if fieldsToObserve != nil { setupKeyboardObserver() }
     }
     
     @available(*, unavailable, message: "Can't load VC from nib.")
@@ -43,12 +46,12 @@ private extension NnViewController {
     }
     
     func getFirstResponder() -> UIView? {
-        view.subviews.first(where: { $0.isFirstResponder })
+        fieldsToObserve?.first(where: { $0.isFirstResponder })
     }
     
     func moveContentAbove(_ keyboardHeight: CGFloat) {
         guard
-            let currentField = getFirstResponder() as? UITextField,
+            let currentField = getFirstResponder(),
             let fieldBottom = view.getConvertedFrame(fromSubview: currentField)?.maxY
         else { return }
         
@@ -57,9 +60,9 @@ private extension NnViewController {
         if let toolbar = currentField.inputView {
             toolbarHeight = view.getConvertedFrame(fromSubview: toolbar)?.maxY ?? 0
         }
-        
+
         let keyboardTop = view.screenHeight - keyboardHeight - toolbarHeight
-        
+
         if fieldBottom > keyboardTop {
             view.frame.origin.y = -(fieldBottom - keyboardTop)
         } else {
