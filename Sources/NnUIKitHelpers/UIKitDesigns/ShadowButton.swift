@@ -16,7 +16,7 @@ open class ShadowButton: UIButton {
     
     
     // MARK: - Init
-    public init(_ text: String = "", buttonType: ButtonType = .shadow, addDefaultDesign: Bool = false) {
+    public init(_ text: String = "", buttonType: ButtonType = .shadow, addDefaultDesign: Bool = true) {
         self.type = buttonType
         super.init(frame: .zero)
         
