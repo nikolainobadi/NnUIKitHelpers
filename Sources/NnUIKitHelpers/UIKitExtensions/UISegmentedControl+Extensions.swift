@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  UISegmentedControls+Extensions.swift
 //  
 //
 //  Created by Nikolai Nobadi on 2/9/22.
