@@ -23,7 +23,7 @@ open class NnView: UIView {
     }
     
     // MARK: - Display Setup
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         
         layoutIfNeeded()
