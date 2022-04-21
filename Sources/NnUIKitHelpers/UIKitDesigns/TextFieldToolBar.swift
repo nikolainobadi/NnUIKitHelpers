@@ -10,8 +10,8 @@ import UIKit
 public final class TextFieldToolBar: UIToolbar {
     
     // MARK: - Properties
-    private let onNextTapped: () -> Void
-    private let onCancelTapped: () -> Void
+    private let onNextTapped: (() -> Void)?
+    private let onCancelTapped: (() -> Void)?
 
     
     // MARK: - Buttons
@@ -37,15 +37,17 @@ public final class TextFieldToolBar: UIToolbar {
     
     
     // MARK: - Init
-    public init(onNextTapped: @escaping () -> Void,
-                onCancelTapped: @escaping () -> Void) {
+    public init(onNextTapped: (() -> Void)? = nil,
+                onCancelTapped: (() -> Void)? = nil,
+                tintColor: UIColor? = .white) {
         
         self.onNextTapped = onNextTapped
         self.onCancelTapped = onCancelTapped
         super.init(frame: .zero)
         
         sizeToFit()
-        tintColor = .white
+        self.tintColor = tintColor
+        
         setItems([cancelButton, spaceButton, nextButton],
                  animated: false)
     }
@@ -57,11 +59,11 @@ public final class TextFieldToolBar: UIToolbar {
     
     // MARK: - Actions
     @objc func didTapNextButton() {
-        onNextTapped()
+        onNextTapped?()
     }
     
     @objc func didTapCancelButton() {
-        onCancelTapped()
+        onCancelTapped?()
     }
 }
 
